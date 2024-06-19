@@ -1,13 +1,13 @@
 import axios from 'axios';
 import queryString from 'query-string';
 import { getBearerToken, getDeviceId } from '@/services/LocalStorage';
-import AuthService from '@/services/AuthService'; // Assumed to be defined
+import AuthService from '@/api/Auth/index'; // Assumed to be defined
 import storage from '@/utils/storage';
 
 class Http {
     constructor() {
         this.axiosInstance = axios.create({
-            baseURL: process.env.VUE_BASE_PATH,
+            baseURL: import.meta.env.VUE_BASE_PATH,
             headers: {
                 Accept: 'application/json',
                 'Content-Type': 'application/json'
@@ -35,10 +35,10 @@ class Http {
         if (status === 401) {
             const refreshToken = storage.get({ key: 'refreshToken' });
             try {
-                const { accessToken, refreshToken: newRefreshToken } = await AuthService.refresh(refreshToken);
-                storage.set('accessToken', accessToken);
-                storage.setItem('refreshToken', newRefreshToken);
-                error.config.headers.Authorization = `Bearer ${accessToken}`;
+                // const { accessToken, refreshToken: newRefreshToken } = await AuthService.refresh(refreshToken);
+                // storage.set('accessToken', accessToken);
+                // storage.setItem('refreshToken', newRefreshToken);
+                // error.config.headers.Authorization = `Bearer ${accessToken}`;
                 return this.axiosInstance(error.config);
             } catch (refreshError) {
                 return Promise.reject(refreshError);

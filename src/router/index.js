@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import { VUE_BASE_PATH } from '@/constants';
 import { publicRoutes } from './publicRoutes';
-import { requiresAuth } from './guards';
+import { requiresAuth, handleOnErrorRouter, handleAfterRouter } from './guards';
 import { privateRoutes } from './privateRoutes';
 
 export const router = createRouter({
@@ -12,5 +12,7 @@ export const router = createRouter({
 export async function setupRouter(app) {
     app.use(router);
     router.beforeEach(requiresAuth);
+    router.onError(handleOnErrorRouter)
+    router.afterEach(handleAfterRouter)
     await router.isReady();
 }

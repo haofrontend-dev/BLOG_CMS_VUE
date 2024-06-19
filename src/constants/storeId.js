@@ -4,5 +4,6 @@ export const SetupStoreId = {
     Auth: 'authStore',
     Route: 'routeStore',
     Tab: 'tabStore',
-    Metadata: 'metadataStore'
+    Metadata: 'metadataStore',
+    Global: 'globalStore'
   }

@@ -1,1 +1,2 @@
-export { default as MetadataService } from './Metadatas'
+export { default as MetadataApi } from './Metadata'
+export { default as AuthApi } from './Auth'

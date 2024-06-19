@@ -1,18 +1,16 @@
 import { AppRoute } from '@/constants';
-import MainLayout from '@/layouts/main-layout/index.vue';
 
 export const privateRoutes = [
     {
         path: '/',
-        component: MainLayout,
-        children: [
-            {
-                path: AppRoute.Post.path,
-                name: AppRoute.Post.name,
-                component: () => import('@/modules/posts-manager/views/posts/PostVIew.vue'),
-                alias: ['/', '/posts'],
-                meta: { requiresAuth: true }
-            }
-        ]
+        redirect: AppRoute.Home.path
+    },
+    {
+        path: '/layout',
+        name: 'layout',
+        component: () => import('@/layouts/index.vue'),
+        // component: () => import("@/layouts/indexAsync.vue"),
+        redirect: AppRoute.Home.path,
+        children: []
     }
 ];

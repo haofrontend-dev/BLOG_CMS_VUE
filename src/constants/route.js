@@ -14,5 +14,9 @@ export const AppRoute = {
     PostDetails: {
         name: 'post-details',
         path: '/post-management/posts/:id'
+    },
+    Home: {
+        name: "home",
+        path: '/home/index'
     }
 };

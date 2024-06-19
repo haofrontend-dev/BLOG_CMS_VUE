@@ -23,7 +23,7 @@ const transitionName = computed(() => (true ? 'left' : 'right'));
                 <component
                     :is="Component"
                     :class="{ 'p-16px': showPadding }"
-                    class="flex-grow bg-layout transition-300"
+                    class="flex-grow bg-white transition duration-300"
                 />
             </KeepAlive>
         </Transition>

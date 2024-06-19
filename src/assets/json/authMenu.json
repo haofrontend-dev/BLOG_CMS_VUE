@@ -1,0 +1,83 @@
+{
+    "code": 200,
+    "data": [
+        {
+            "path": "/home/index",
+            "name": "home",
+            "component": "/home-sites/views/index",
+            "meta": {
+                "icon": "material-symbols:home-outline",
+                "title": "View Site",
+                "isLink": "",
+                "isHide": false,
+                "isFull": false,
+                "isAffix": true,
+                "isKeepAlive": true,
+                "requiresAuth": true
+            }
+        },
+        {
+            "path": "/create-page",
+            "name": "createPage",
+            "component": "/createPage/index",
+            "meta": {
+                "icon": "gridicons:create",
+                "title": "Create page",
+                "isLink": "",
+                "isHide": false,
+                "isFull": true,
+                "isAffix": false,
+                "isKeepAlive": true,
+                "requiresAuth": true
+            }
+        },
+        {
+            "path": "/blog-articles",
+            "name": "blogArticles",
+            "redirect": "/blog-articles/list",
+            "meta": {
+                "icon": "ph:pen-nib-bold",
+                "title": "Blog articles",
+                "isLink": "",
+                "isHide": false,
+                "isFull": false,
+                "isAffix": false,
+                "isKeepAlive": true,
+                "requiresAuth": true
+            },
+            "children": [
+                {
+                    "path": "/blog-articles/list",
+                    "name": "blogList",
+                    "component": "/blog-articles/list/index",
+                    "meta": {
+                        "icon": "tabler:list",
+                        "title": "Post list",
+                        "isLink": "",
+                        "isHide": false,
+                        "isFull": false,
+                        "isAffix": false,
+                        "isKeepAlive": true,
+                        "requiresAuth": true
+                    }
+                },
+                {
+                    "path": "/blog-articles/category",
+                    "name": "blogCategory",
+                    "component": "/blog-articles/category/index",
+                    "meta": {
+                        "icon": "carbon:categories",
+                        "title": "Categories",
+                        "isLink": "",
+                        "isHide": false,
+                        "isFull": false,
+                        "isAffix": false,
+                        "isKeepAlive": true,
+                        "requiresAuth": true
+                    }
+                }
+            ]
+        }
+    ],
+    "msg": "成功"
+}
