@@ -9,7 +9,7 @@ import AppSidebar from '../components/AppSidebar.vue'
         <AppHeader />
         <div class="flex">
             <AppSidebar />
-            <div class="pt-[80px]">
+            <div class="pt-[80px] w-full">
                 <GlobalContent />
             </div>
         </div>

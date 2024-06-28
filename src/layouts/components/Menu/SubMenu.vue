@@ -2,7 +2,7 @@
     <ul class="w-full flex flex-col">
         <li v-for="subItem in menuList" :key="subItem.path" class="w-full my-1">
             <div v-if="subItem.children?.length" class="transition duration-300 max-h-fit">
-                <Button
+                <div
                     variant="ghost"
                     size="lg"
                     class="w-full text-lg justify-between"
@@ -12,11 +12,11 @@
                     <Icon :icon="subItem.meta.icon" />
                     <span class="sle">{{ subItem.meta.title }}</span>
                     <Icon icon="material-symbols:arrow-drop-down" class="text-2xl" />
-                </Button>
+                </div>
                 <SubMenu v-if="isOpenMenu" :menu-list="subItem.children" class="pl-3" />
             </div>
 
-            <Button
+            <div
                 v-else
                 variant="ghost"
                 size="lg"
@@ -26,7 +26,7 @@
             >
                 <Icon :icon="subItem.meta.icon" />
                 <span class="">{{ subItem.meta.title }}</span>
-            </Button>
+            </div>
         </li>
     </ul>
 </template>
@@ -34,12 +34,10 @@
 <script setup>
 // * LIB
 import { defineProps, ref } from 'vue';
-import { RouterLink, useRouter } from 'vue-router';
+import { useRouter } from 'vue-router';
 import { Icon } from '@iconify/vue';
 
 // * IMPORT
-import { Button } from '@/components/ui/button';
-
 defineProps({
     menuList: Array
 });

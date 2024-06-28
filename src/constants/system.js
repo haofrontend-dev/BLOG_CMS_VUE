@@ -3,8 +3,13 @@ export const Authentication = {
     RefreshToken: 'refresh-token',
     DeviceId: 'device-id',
     ExpiryIn: 'expires-in'
-  }
+};
 
-  export const System = {
+export const System = {
     Locale: 'locale'
-  }
+};
+
+export const StatusAnaly = {
+    Up: 1,
+    Down: 2
+};

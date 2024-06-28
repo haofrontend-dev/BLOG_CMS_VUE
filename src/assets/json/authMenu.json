@@ -7,7 +7,7 @@
             "component": "/home-sites/views/index",
             "meta": {
                 "icon": "material-symbols:home-outline",
-                "title": "View Site",
+                "title": "Bảng tin",
                 "isLink": "",
                 "isHide": false,
                 "isFull": false,
@@ -17,12 +17,12 @@
             }
         },
         {
-            "path": "/create-page",
-            "name": "createPage",
+            "path": "/page",
+            "name": "page",
             "component": "/createPage/index",
             "meta": {
-                "icon": "gridicons:create",
-                "title": "Create page",
+                "icon": "fluent-mdl2:page-solid",
+                "title": "Trang",
                 "isLink": "",
                 "isHide": false,
                 "isFull": true,
@@ -32,12 +32,12 @@
             }
         },
         {
-            "path": "/blog-articles",
-            "name": "blogArticles",
+            "path": "/posts",
+            "name": "posts",
             "redirect": "/blog-articles/list",
             "meta": {
                 "icon": "ph:pen-nib-bold",
-                "title": "Blog articles",
+                "title": "Bài viết",
                 "isLink": "",
                 "isHide": false,
                 "isFull": false,
@@ -47,12 +47,12 @@
             },
             "children": [
                 {
-                    "path": "/blog-articles/list",
-                    "name": "blogList",
+                    "path": "/create-post",
+                    "name": "postCreate",
                     "component": "/blog-articles/list/index",
                     "meta": {
-                        "icon": "tabler:list",
-                        "title": "Post list",
+                        "icon": "",
+                        "title": "Tạo bài viết",
                         "isLink": "",
                         "isHide": false,
                         "isFull": false,
@@ -62,12 +62,27 @@
                     }
                 },
                 {
-                    "path": "/blog-articles/category",
+                    "path": "/post/all",
                     "name": "blogCategory",
                     "component": "/blog-articles/category/index",
                     "meta": {
-                        "icon": "carbon:categories",
-                        "title": "Categories",
+                        "icon": "",
+                        "title": "Tất cả bài viết",
+                        "isLink": "",
+                        "isHide": false,
+                        "isFull": false,
+                        "isAffix": false,
+                        "isKeepAlive": true,
+                        "requiresAuth": true
+                    }
+                },
+                {
+                    "path": "/categories/all",
+                    "name": "category",
+                    "component": "/blog-articles/category/index",
+                    "meta": {
+                        "icon": "",
+                        "title": "Chuyên mục",
                         "isLink": "",
                         "isHide": false,
                         "isFull": false,
@@ -77,6 +92,21 @@
                     }
                 }
             ]
+        },
+        {
+            "path": "/media",
+            "name": "media",
+            "component": "/media-mamager/index",
+            "meta": {
+                "icon": "dashicons:admin-media",
+                "title": "Media",
+                "isLink": "",
+                "isHide": false,
+                "isFull": true,
+                "isAffix": false,
+                "isKeepAlive": true,
+                "requiresAuth": true
+            }
         }
     ],
     "msg": "成功"

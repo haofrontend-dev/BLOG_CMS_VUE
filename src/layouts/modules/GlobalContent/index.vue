@@ -6,9 +6,12 @@ defineOptions({
 });
 
 
-withDefaults(defineProps(), {
-  showPadding: true
-});
+defineProps({
+    showPadding: {
+        type: Boolean,
+        default: () => true
+    },
+})
 
 const transitionName = computed(() => (true ? 'left' : 'right'));
 </script>

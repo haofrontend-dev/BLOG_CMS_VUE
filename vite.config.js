@@ -4,6 +4,8 @@ import vueJsx from '@vitejs/plugin-vue-jsx';
 import process from 'node:process';
 import { URL, fileURLToPath } from 'node:url';
 import dayjs from 'dayjs';
+import Components from 'unplugin-vue-components/vite';
+import { PrimeVueResolver } from '@primevue/auto-import-resolver';
 
 import tailwind from 'tailwindcss';
 import autoprefixer from 'autoprefixer';
@@ -19,7 +21,13 @@ export default defineConfig((configEnv) => {
 
     return {
         base: viteEnv.VITE_BASE_URL || '/',
-        plugins: [vue(), vueJsx()],
+        plugins: [
+            vue(),
+            vueJsx(),
+            Components({
+                resolvers: [PrimeVueResolver()]
+            })
+        ],
         resolve: {
             alias: {
                 '~': fileURLToPath(new URL('./', import.meta.url)),

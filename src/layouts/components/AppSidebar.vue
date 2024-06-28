@@ -1,46 +1,54 @@
 <template>
-    <div
-        class="w-[300px] h-screen overflow-y-auto md:flex flex-col items-start border-r border-gray-300 transition duration-200 pt-[80px] hidden"
-    >
-        <nav class="flex flex-col px-8 w-full mt-20 transition max-w-fix duration-300">
-            <ScrollArea>
-                <SubMenu :menu-list="menuList" />
-            </ScrollArea>
-        </nav>
+    <div class="card flex h-screen w-60">
+        <TieredMenu
+            :model="menuList"
+            :pt="{
+                root: {
+                    class: 'pt-[80px]'
+                }
+            }"
+        >
+            <template #item="{ item, props, hasSubmenu }">
+                <RouterLink
+                    v-if="!hasSubmenu"
+                    :to="item.path"
+                    v-ripple
+                    class="flex items-center"
+                    :class="{ 'bg-green-200': isActive(item.path) }"
+                    v-bind="props.action"
+                >
+                    <Icon :icon="item.meta.icon" />
+                    <span>{{ item.meta.title }}</span>
+                    <Badge v-if="item.badge" class="ml-auto" :value="item.badge" />
+                </RouterLink>
+                <a v-else v-ripple class="flex items-center" v-bind="props.action">
+                    <Icon :icon="item.meta.icon" />
+                    <span>{{ item.meta.title }}</span>
+                    <Badge v-if="item.badge" class="ml-auto" :value="item.badge" />
+                    <i v-if="hasSubmenu" class="pi pi-angle-right ml-auto"></i>
+                </a>
+            </template>
+        </TieredMenu>
     </div>
 </template>
 
 <script setup>
 // * LIB
 import { computed, ref, watch } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
+import { useRoute, useRouter, RouterLink } from 'vue-router';
+import { Icon } from '@iconify/vue';
 
 // * IMPOR
 import { useAuthStore } from '@/stores/modules/auth';
-import { ScrollArea } from '@/components/ui/scroll-area';
-import SubMenu from './Menu/SubMenu.vue';
+import { convertChildrenToItems } from '@/helpers';
 const route = useRoute();
-const router = useRouter();
 const authStore = useAuthStore();
-const menuList = computed(() => authStore.showMenuListGet);
-const activeMenu = computed(() => (route.meta.activeMenu ? route.meta.activeMenu : route.path));
+const menuList = computed(() => convertChildrenToItems(authStore.showMenuListGet));
 
-const subMenuList = ref([]);
-watch(
-    () => [menuList, route],
-    () => {
-        if (!menuList.value.length) return;
-        const menuItem = menuList.value.filter((item) => {
-            return route.path === item.path || `/${route.path.split('/')[1]}` === item.path;
-        });
-        if (menuItem[0].children?.length) return (subMenuList.value = menuItem[0]?.children);
-        subMenuList.value = [];
-    },
-    {
-        deep: true,
-        immediate: true
-    }
-);
+const isActive = (path) => {
+    return route.path === path || `/${route.path.split('/')[1]}` === path;
+};
+
 </script>
 
 <style lang="scss" scoped></style>

@@ -4,10 +4,7 @@ import { RouterLink } from 'vue-router';
 import { Menu, Bell } from 'lucide-vue-next';
 
 // * IMPORT
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
 import AppContainer from '@/components/App/Container.vue';
-import UserAction from './UserAction.vue'
 </script>
 
 <template>
@@ -27,10 +24,9 @@ import UserAction from './UserAction.vue'
 
                 <!-- User Action -->
                 <div class="flex items-center gap-6">
-                    <Button variant="outline" size="icon" class="bg-transparent text-white hover:text-black relative hidden md:flex">
+                    <button variant="outline" size="icon" class="bg-transparent text-white hover:text-black relative hidden md:flex">
                         <Bell class="w-4 h-4" />
-                    </Button>
-                    <UserAction />
+                    </button>
                 </div>
             </div>
         </AppContainer>
